@@ -334,3 +334,16 @@ D:\Files\Docs\Unity\Project_Games\DonutLab-Test\obj\Debug\Assembly-CSharp.csproj
 D:\Files\Docs\Unity\Project_Games\DonutLab-Test\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\Files\Docs\Unity\Project_Games\DonutLab-Test\obj\Debug\Assembly-CSharp.dll
 D:\Files\Docs\Unity\Project_Games\DonutLab-Test\obj\Debug\Assembly-CSharp.pdb
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\DOTween.dll
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\Assembly-CSharp-firstpass.pdb
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\DOTween.xml
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\nunit.framework.dll
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\unityplastic.dll
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\Unity.Plastic.Newtonsoft.Json.dll
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\Unity.Plastic.Antlr3.Runtime.dll
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\DonutLab.Interface.pdb
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\DonutLab.Game.pdb
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\BeauRoutine.pdb
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\NaughtyAttributes.Editor.pdb
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\NaughtyAttributes.Core.pdb
+D:\Files\Docs\Unity\Project_Games\DonutLab-Test\Temp\Bin\Debug\VolumeBox.Toolbox.pdb
