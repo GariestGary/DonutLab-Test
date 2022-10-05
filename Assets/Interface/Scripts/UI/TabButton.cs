@@ -11,9 +11,8 @@ public class TabButton : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Sprite selectedSprite;
     [SerializeField] private Sprite basicSprite;
-    [SerializeField] private string tabName;
-
-    public string TabName => tabName;
+    [SerializeField] private Image iconImage;
+    
     public UnityEvent<TabButton> onClickEvent;
     
     private Image image;
@@ -22,6 +21,11 @@ public class TabButton : MonoBehaviour, IPointerClickHandler
     {
         image = GetComponent<Image>();
         Deselect();
+    }
+
+    public void SetIcon(Sprite icon)
+    {
+        iconImage.sprite = icon;
     }
 
     public void OnPointerClick(PointerEventData eventData)
