@@ -13,7 +13,7 @@ public class TabContentHandler : MonoBehaviour
         
     }
 
-    public void Initialize(Content content)
+    public void Initialize(Group @group)
     {
         
     }

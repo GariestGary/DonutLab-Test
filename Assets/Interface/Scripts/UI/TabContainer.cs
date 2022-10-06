@@ -2,29 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class TabContainer : MonoBehaviour
 {
     [SerializeField] private GameObject scrollViewItemPrefab;
     [SerializeField] private Transform contentRoot;
-    
-    private List<TabContent> contents = new List<TabContent>();
-    private TabContent currentShownContent;
+    [SerializeField] private GameObject selectionFrame;
+    [SerializeField] private GameObject selectedSign;
 
-    public TabContent AddContent(Content content)
+    public UnityEvent<ScrollViewButton> ItemClickedEvent;
+    public UnityEvent<Group> ShownContentChanged;
+    public UnityEvent<string> contentNameChanged;
+
+    private List<TabContent> contents = new List<TabContent>();
+    public TabContent CurrentShownContent { get; private set; }
+    public ScrollViewButton CurrentClickedButton { get; private set; }
+
+    public TabContent AddContent(Group group)
     {
         TabContent tabContent = new TabContent();
-        tabContent.Icon = content.ContentIcon;
-        tabContent.Name = content.Name;
-        foreach (var item in content.items)
+
+        foreach (var item in group.items)
         {
-            ScrollViewItem scrollItem = Instantiate(scrollViewItemPrefab, Vector3.zero, Quaternion.identity, contentRoot).GetComponent<ScrollViewItem>();
-            scrollItem.gameObject.SetActive(false);
-            scrollItem.Initialize(item.Name, item.Sprite, item.GameObject);
-            tabContent.Items.Add(scrollItem);
+            ScrollViewButton scrollButton = Instantiate(scrollViewItemPrefab, Vector3.zero, Quaternion.identity, contentRoot).GetComponent<ScrollViewButton>();
+            scrollButton.gameObject.SetActive(false);
+            scrollButton.Initialize(item.Sprite, item, tabContent);
+            scrollButton.ClickedEvent.AddListener(HandleItemClick);
+            tabContent.Items.Add(scrollButton);
         }
+
+        tabContent.Group = group;
         contents.Add(tabContent);
         return tabContent;
+    }
+
+    public void ClickItem(Item item)
+    {
+        foreach (var content in contents)
+        {
+            ScrollViewButton button = content.Items.FirstOrDefault(b => b.AssociatedItem == item);
+
+            if (button != null)
+            {
+                Show(content);
+                button.Click();
+                break;
+            }
+        }
+    }
+
+    private void HandleItemClick(ScrollViewButton scrollButton)
+    {
+        ItemClickedEvent.Invoke(scrollButton);
+        
+        if (scrollButton == null)
+        {
+            return;
+        }
+        
+        selectionFrame.SetActive(true);
+        var itemTransform = scrollButton.transform;
+        selectionFrame.transform.position = itemTransform.position;
+        selectionFrame.transform.SetParent(itemTransform);
+        CurrentClickedButton = scrollButton;
     }
 
     public void Show(TabContent content)
@@ -34,18 +76,36 @@ public class TabContainer : MonoBehaviour
             return;
         }
         
-        currentShownContent?.Items?.ForEach(c => c.gameObject.SetActive(false));
+        CurrentShownContent?.Items?.ForEach(c => c.gameObject.SetActive(false));
         content.Items?.ForEach(c => c.gameObject.SetActive(true));
-        currentShownContent = content;
+        CurrentShownContent = content; 
+        contentNameChanged.Invoke(CurrentShownContent.Group.Name);
+        UpdateSelected();
+        ShownContentChanged.Invoke(CurrentShownContent.Group);
+    }
+
+    public void UpdateSelected()
+    {
+        ScrollViewButton scrollButton = CurrentShownContent.Items.FirstOrDefault(i => i.AssociatedItem == CurrentShownContent.Group.CurrentSelected);
+
+        if (scrollButton == null)
+        {
+            selectedSign.SetActive(false);
+        }
+        else
+        {
+            selectedSign.SetActive(true);
+            selectedSign.transform.position = scrollButton.transform.position;
+            selectedSign.transform.SetParent(scrollButton.transform);
+        }
     }
 }
 
 [System.Serializable]
 public class TabContent
 {
-    public string Name;
-    public Sprite Icon;
-    public List<ScrollViewItem> Items = new List<ScrollViewItem>();
+    public Group Group;
+    public List<ScrollViewButton> Items = new List<ScrollViewButton>();
 }
 
 

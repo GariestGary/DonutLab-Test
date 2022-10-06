@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3559cdaea3e16a048a87e56e21f49fb1, type: 3}
+  m_Name: Default Content
+  m_EditorClassIdentifier: 
+  contents:
+  - Name: Characters
+    ContentIcon: {fileID: 21300000, guid: c8b8d718342b95b42a327216d3448a05, type: 3}
+    items:
+    - Name: First
+      Sprite: {fileID: 21300000, guid: 8f75fd5fa5f0151489a83415ed6b87f2, type: 3}
+      Prefab: {fileID: 449594286360500023, guid: b01c1a9e7ba4a12418498425de5c8d32, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    - Name: Second
+      Sprite: {fileID: 21300000, guid: ed53cdb01ab3106499675384db23b4e0, type: 3}
+      Prefab: {fileID: 1512611554820995875, guid: b11bca55271779b41b1a6ce62b696260, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    CurrentSelected:
+      Name: 
+      Sprite: {fileID: 0}
+      Prefab: {fileID: 0}
+      InstantiatedGameObject: {fileID: 0}
+  - Name: Stands
+    ContentIcon: {fileID: 21300000, guid: e86cf8d320407104dab6d84d099309da, type: 3}
+    items:
+    - Name: First
+      Sprite: {fileID: 21300000, guid: d1be4ed6ac4cbac4f9cea967e105a8a0, type: 3}
+      Prefab: {fileID: 449594286360500023, guid: b01c1a9e7ba4a12418498425de5c8d32, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    - Name: Second
+      Sprite: {fileID: 21300000, guid: a819f6803ae1cf54c88c0cb96f280991, type: 3}
+      Prefab: {fileID: 1512611554820995875, guid: b11bca55271779b41b1a6ce62b696260, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    CurrentSelected:
+      Name: 
+      Sprite: {fileID: 0}
+      Prefab: {fileID: 0}
+      InstantiatedGameObject: {fileID: 0}

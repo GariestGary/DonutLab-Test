@@ -42,12 +42,6 @@ public class TabButtonsContainer : MonoBehaviour
         GetButtonByIndex(index).Click();
     }
 
-    public void Select(int index)
-    {
-        TabButton selectedButton = GetButtonByIndex(index);
-        Select(selectedButton);
-    }
-
     private TabButton GetButtonByIndex(int index)
     {
         if (index < 0 || index >= buttons.Count)
