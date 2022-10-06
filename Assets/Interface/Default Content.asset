@@ -14,34 +14,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contents:
   - Name: Characters
-    ContentIcon: {fileID: 21300000, guid: c8b8d718342b95b42a327216d3448a05, type: 3}
+    ContentIcon: {fileID: 593399742471370802, guid: beca163fea61eba438f7383a58558c35, type: 3}
+    OrderInHierarchy: 1
     items:
-    - Name: First
-      Sprite: {fileID: 21300000, guid: 8f75fd5fa5f0151489a83415ed6b87f2, type: 3}
-      Prefab: {fileID: 449594286360500023, guid: b01c1a9e7ba4a12418498425de5c8d32, type: 3}
+    - Name: Bronze
+      Sprite: {fileID: -1846784345090356148, guid: 94b8ac85ed7f92548a70a54ae2d4f5ac, type: 3}
+      Prefab: {fileID: 6479547824857861837, guid: 80a8a7e5e4ec1104ea731603d911d5e1, type: 3}
       InstantiatedGameObject: {fileID: 0}
-    - Name: Second
-      Sprite: {fileID: 21300000, guid: ed53cdb01ab3106499675384db23b4e0, type: 3}
-      Prefab: {fileID: 1512611554820995875, guid: b11bca55271779b41b1a6ce62b696260, type: 3}
+    - Name: Chromatic
+      Sprite: {fileID: -1846784345090356148, guid: adae594df0c92b44e801baff18f94947, type: 3}
+      Prefab: {fileID: 3162892595595605150, guid: 44a7458a0037ffb459e4a9c8e138c2ab, type: 3}
       InstantiatedGameObject: {fileID: 0}
-    CurrentSelected:
-      Name: 
-      Sprite: {fileID: 0}
-      Prefab: {fileID: 0}
+    - Name: Golden
+      Sprite: {fileID: -1846784345090356148, guid: 96c08c42095867e46ab4cc5677db4fbb, type: 3}
+      Prefab: {fileID: 3162892595595605150, guid: 5656a4df6f99d1b4eb99cbd8b3fda035, type: 3}
       InstantiatedGameObject: {fileID: 0}
+    - Name: Painter
+      Sprite: {fileID: -1846784345090356148, guid: 18e57aaa9419e164284c89f87f037292, type: 3}
+      Prefab: {fileID: 3162892595595605150, guid: 553116c4396bb814d879022033c107fa, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    - Name: Diffused
+      Sprite: {fileID: -1846784345090356148, guid: d3c54fd2b24f43b44ae8ba14ecd61408, type: 3}
+      Prefab: {fileID: 3162892595595605150, guid: 7491903dd52018048a794ca177ffa004, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    - Name: Waved
+      Sprite: {fileID: -1846784345090356148, guid: bcaffb13566be1e438fff2b0c4395d5e, type: 3}
+      Prefab: {fileID: 3162892595595605150, guid: 3033b6011be34b1409f440754aec9041, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    CurrentSelected: Painter
   - Name: Stands
-    ContentIcon: {fileID: 21300000, guid: e86cf8d320407104dab6d84d099309da, type: 3}
+    ContentIcon: {fileID: -6489300666904299396, guid: beca163fea61eba438f7383a58558c35, type: 3}
+    OrderInHierarchy: 0
     items:
-    - Name: First
-      Sprite: {fileID: 21300000, guid: d1be4ed6ac4cbac4f9cea967e105a8a0, type: 3}
-      Prefab: {fileID: 449594286360500023, guid: b01c1a9e7ba4a12418498425de5c8d32, type: 3}
+    - Name: Anaglyph
+      Sprite: {fileID: 13504137159229734, guid: e4fe253a6f7502445a2714dad7bb65c9, type: 3}
+      Prefab: {fileID: 4681890959133967712, guid: b810c0df19556a64d83418e1215930be, type: 3}
       InstantiatedGameObject: {fileID: 0}
-    - Name: Second
-      Sprite: {fileID: 21300000, guid: a819f6803ae1cf54c88c0cb96f280991, type: 3}
-      Prefab: {fileID: 1512611554820995875, guid: b11bca55271779b41b1a6ce62b696260, type: 3}
+    - Name: Cyan
+      Sprite: {fileID: -4230834068246820378, guid: e4fe253a6f7502445a2714dad7bb65c9, type: 3}
+      Prefab: {fileID: 3235041795367773082, guid: fda5f707d98370844bad4548badd1307, type: 3}
       InstantiatedGameObject: {fileID: 0}
-    CurrentSelected:
-      Name: 
-      Sprite: {fileID: 0}
-      Prefab: {fileID: 0}
+    - Name: Hellfire
+      Sprite: {fileID: -125958720027379222, guid: e4fe253a6f7502445a2714dad7bb65c9, type: 3}
+      Prefab: {fileID: 109671142432010230, guid: dadb6782874e1d042a2aa134ac9d122d, type: 3}
       InstantiatedGameObject: {fileID: 0}
+    - Name: Pinky
+      Sprite: {fileID: 6958454078787211847, guid: e4fe253a6f7502445a2714dad7bb65c9, type: 3}
+      Prefab: {fileID: 269405379869831160, guid: 752c40eec504ff94faa0fee33c406250, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    - Name: Starry Blue
+      Sprite: {fileID: 1195639982309092857, guid: e4fe253a6f7502445a2714dad7bb65c9, type: 3}
+      Prefab: {fileID: 5274058732162958233, guid: 9971cccaf21e0fa4aaac6718dca002a5, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    - Name: Toxic
+      Sprite: {fileID: 2882153886863944493, guid: e4fe253a6f7502445a2714dad7bb65c9, type: 3}
+      Prefab: {fileID: 9198041424557724559, guid: ae92ff0bf5494084cb1b59f8d87b3a48, type: 3}
+      InstantiatedGameObject: {fileID: 0}
+    CurrentSelected: Pinky

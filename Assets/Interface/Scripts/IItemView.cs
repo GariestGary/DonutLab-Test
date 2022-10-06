@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IItemView
 {
     public void Show(ScrollViewButton obj);
+    public ScrollViewButton CurrentShownItem { get; }
 }

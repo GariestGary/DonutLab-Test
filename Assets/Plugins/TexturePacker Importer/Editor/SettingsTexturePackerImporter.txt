@@ -1,0 +1,17 @@
+version: 2
+tpsheetFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+- Assets/Interface/Sprites/character.tpsheet
+- Assets/Interface/Sprites/Stands/stands.tpsheet
+- Assets/Interface/Sprites/UI/ui.tpsheet
+textureFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+- Assets/Interface/Sprites/character.png
+- Assets/Interface/Sprites/Stands/stands.png
+- Assets/Interface/Sprites/UI/ui.png
+normalmapFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+- 
+enableDebugOutput: 0

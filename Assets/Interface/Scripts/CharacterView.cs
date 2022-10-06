@@ -15,30 +15,34 @@ public class CharacterView : MonoBehaviour, IItemView
     [SerializeField] private RectTransform jumpStartPoint;
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpDuration;
+    [SerializeField] private string jumpTriggerName;
 
-    private ScrollViewButton currentShownCharacter;
+    public ScrollViewButton CurrentShownItem { get; private set; }
     private Tween jumpTween;
     
     public void Show(ScrollViewButton scrollButton)
     {
         jumpTween?.Kill();
         
-        currentShownCharacter?.AssociatedItem.InstantiatedGameObject.SetActive(false);
+        CurrentShownItem?.AssociatedItem.InstantiatedGameObject.SetActive(false);
 
         scrollButton.AssociatedItem.InstantiatedGameObject.SetActive(true);
-        scrollButton.AssociatedItem.InstantiatedGameObject.transform.position = jumpStartPoint.position;
-        jumpTween = (scrollButton.AssociatedItem.InstantiatedGameObject.transform as RectTransform).DOJump(characterViewPoint.position, jumpPower, 1, jumpDuration);
+        (scrollButton.AssociatedItem.InstantiatedGameObject.transform as RectTransform).position = jumpStartPoint.position;
+        jumpTween = (scrollButton.AssociatedItem.InstantiatedGameObject.transform as RectTransform)
+            .DOJump(characterViewPoint.position, jumpPower, 1, jumpDuration).SetEase(Ease.Linear);
         jumpTween.onComplete += AdjustPosition;
         jumpTween.Restart();
 
-        currentShownCharacter = scrollButton;
+        CurrentShownItem = scrollButton;
+
+        CurrentShownItem.AssociatedItem.InstantiatedGameObject.GetComponent<Animator>().SetTrigger(jumpTriggerName);
         characterNameText.text = scrollButton.AssociatedItem.Name;
     }
     
     //preventing positioning issues when changing resolution while tween is playing
     private void AdjustPosition()
     {
-        currentShownCharacter.AssociatedItem.InstantiatedGameObject.transform.position = characterViewPoint.position;
+        (CurrentShownItem.AssociatedItem.InstantiatedGameObject.transform as RectTransform).position = characterViewPoint.position;
     }
 
     private void OnDestroy()

@@ -43,10 +43,14 @@ public class TabContainer : MonoBehaviour
         foreach (var content in contents)
         {
             ScrollViewButton button = content.Items.FirstOrDefault(b => b.AssociatedItem == item);
-
+            
             if (button != null)
             {
-                Show(content);
+                if (content != CurrentShownContent)
+                {
+                    Show(content);
+                }
+                
                 button.Click();
                 break;
             }
@@ -55,6 +59,12 @@ public class TabContainer : MonoBehaviour
 
     private void HandleItemClick(ScrollViewButton scrollButton)
     {
+        if (CurrentClickedButton == scrollButton)
+        {
+            return;
+        }
+        
+        
         ItemClickedEvent.Invoke(scrollButton);
         
         if (scrollButton == null)
@@ -67,6 +77,7 @@ public class TabContainer : MonoBehaviour
         selectionFrame.transform.position = itemTransform.position;
         selectionFrame.transform.SetParent(itemTransform);
         CurrentClickedButton = scrollButton;
+        CurrentShownContent.ClickedButton = scrollButton;
     }
 
     public void Show(TabContent content)
@@ -80,13 +91,21 @@ public class TabContainer : MonoBehaviour
         content.Items?.ForEach(c => c.gameObject.SetActive(true));
         CurrentShownContent = content; 
         contentNameChanged.Invoke(CurrentShownContent.Group.Name);
-        UpdateSelected();
         ShownContentChanged.Invoke(CurrentShownContent.Group);
+        UpdateSelected();
+        if (content.ClickedButton == null)
+        {
+            ClickItem(content.Group.GetCurrentSelected());
+        }
+        else
+        {
+            content.ClickedButton.Click();
+        }
     }
 
     public void UpdateSelected()
     {
-        ScrollViewButton scrollButton = CurrentShownContent.Items.FirstOrDefault(i => i.AssociatedItem == CurrentShownContent.Group.CurrentSelected);
+        ScrollViewButton scrollButton = CurrentShownContent.Items.FirstOrDefault(i => i.AssociatedItem == CurrentShownContent.Group.GetCurrentSelected());
 
         if (scrollButton == null)
         {
@@ -105,6 +124,7 @@ public class TabContainer : MonoBehaviour
 public class TabContent
 {
     public Group Group;
+    public ScrollViewButton ClickedButton;
     public List<ScrollViewButton> Items = new List<ScrollViewButton>();
 }
 

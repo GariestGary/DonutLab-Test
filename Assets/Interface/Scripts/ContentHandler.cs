@@ -21,9 +21,12 @@ public class ContentHandler : MonoBehaviour
         foreach (var content in data.contents)
         {
             //Instantiating prefabs
+            GameObject groupRoot = new GameObject(content.Name + " Group");
+            groupRoot.transform.SetParent(itemViewRoot);
+            groupRoot.transform.SetSiblingIndex(content.OrderInHierarchy);
             content.items.ForEach(i =>
             {
-                i.InstantiatedGameObject = i.Prefab ? Instantiate(i.Prefab, Vector3.zero, Quaternion.identity, itemViewRoot) : null;
+                i.InstantiatedGameObject = i.Prefab ? Instantiate(i.Prefab, Vector3.zero, Quaternion.identity, groupRoot.transform) : null;
                 i.InstantiatedGameObject?.SetActive(false);
             });
             
@@ -31,10 +34,12 @@ public class ContentHandler : MonoBehaviour
             TabContent tabContent = tabContainer.AddContent(content);
             tabButtonsContainer.AddButton(content.ContentIcon, _ => tabContainer.Show(tabContent));
 
-            //select first item if there is no one selected
-            if (content.CurrentSelected.InstantiatedGameObject == null && content.items.Count != 0)
+            //select first item if there is no one selected or it doesn't exist
+            Debug.Log(content.CurrentSelected);
+            
+            if ((string.IsNullOrEmpty(content.CurrentSelected) || content.items.All(i => i.Name != content.CurrentSelected)) && content.items.Count != 0)
             {
-                content.CurrentSelected = content.items[0];
+                content.CurrentSelected = content.items[0].Name;
             }
 
         }
@@ -62,25 +67,31 @@ public class ContentHandler : MonoBehaviour
         {
             return;
         }
-        
-        currentViewHandler.Show(scrollButton);
+
+        if (currentViewHandler.CurrentShownItem != scrollButton)
+        {
+            currentViewHandler.Show(scrollButton);
+        }
     }
 
     private void Start()
     {
-        tabButtonsContainer.Click(0);
         tabContainer.UpdateSelected();
-        tabContainer.ClickItem(tabContainer.CurrentShownContent.Group.CurrentSelected);
+        foreach (var content in data.contents)
+        {
+            tabContainer.ClickItem(content.GetCurrentSelected());
+        }
+        tabButtonsContainer.Click(0);
     }
 
     public void SaveCurrentSelectedItem()
     {
-        Item currentItem = tabContainer.CurrentShownContent.Group.CurrentSelected;
+        Item currentItem = tabContainer.CurrentShownContent.Group.GetCurrentSelected();
         Item newItem = tabContainer.CurrentClickedButton.AssociatedItem;
         
         if (currentItem != newItem)
         {
-            tabContainer.CurrentShownContent.Group.CurrentSelected = newItem;
+            tabContainer.CurrentShownContent.Group.CurrentSelected = newItem.Name;
             tabContainer.UpdateSelected();
         }
     }
